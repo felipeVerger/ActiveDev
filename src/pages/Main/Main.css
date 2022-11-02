@@ -1,0 +1,9 @@
+.main-container {
+    margin-left: 194px;
+}
+
+@media screen and (max-width: 990px) {
+    .main-container {
+        margin-left: 0;
+    }
+}
