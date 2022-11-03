@@ -4,16 +4,16 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
     padding-top: 89px;
     padding-left: 9px;
     padding-right: 9px;
-    z-index: 1;
+    z-index: 820;
     overflow-y: auto;
 }
 
 .sidebar-nav {
     width: 100%;
+    z-index: 820;
 }
 
 .sidebar-list {
@@ -45,9 +45,16 @@
     color: var(--text-secondary);
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 991px) {
     .sidebar-container {
-        display: none;
+        box-shadow: 6px 0 15px rgb(0 0 0 / 20%);
+        left: -240px;
+        transform: translatex(0);
+        width: 220px;
+        transition: .25s ease-in-out;
+    }
+    .sidebar-container.open {
+        left: 0;
     }
 }
     

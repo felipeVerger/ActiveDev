@@ -11,7 +11,7 @@
     transition: all .5s;
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 900;
 }
 
 .header-left-block {
@@ -108,6 +108,10 @@
     gap: 1rem;
 }
 
+.avatar {
+    object-fit: cover;
+}
+
 .username {
     color: var(--text-primary);
     text-transform: capitalize;
@@ -119,11 +123,23 @@
     font-size: 1.5em;
 }
 
-@media screen and (max-width: 978px) {
+.hamburger-icon {
+    display: none;
+}
+
+@media screen and (max-width: 991px) {
     .header-left-block {
         width: 100%;
     }
     .actions-links-block {
         display: none;
+    }
+    .logo {
+        display: none;
+    }
+    .hamburger-icon {
+        display: block;
+        color: var(--text-primary);
+        font-size: 1.5em;
     }
 }
