@@ -1,16 +1,13 @@
 .home-container {
     width: 100%;
-    background-color: var(--background);
+    min-height: 100vh;
+    background-color: var(--background-primary);
     transition: all .5s;
 }
 
 .body-wrapper {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
 }
 
 /* .backdrop {
