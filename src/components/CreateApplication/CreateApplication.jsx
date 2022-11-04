@@ -35,7 +35,13 @@ const CreateApplication = () => {
                 name='description'
               />
             </div>
-            
+            <div>
+              <Input
+                label='Company Name'
+                name='company'
+                type='text'
+              />
+            </div>
           </form>
         </div>
         <div>
