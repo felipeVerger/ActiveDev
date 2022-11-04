@@ -9,6 +9,7 @@
     --background-interactive-hover: #00C4F5;
     --background-disable: #A7B7BE;
     --background-enable: #47C27A;
+    --background-danger: #FF7777;
 
     --text-primary: #2b353b;
     --text-secondary: #627884;
@@ -25,6 +26,7 @@
     --background-interactive-hover: #00C4F5;
     --background-disable: #A7B7BE;
     --background-enable: #47C27A;
+    --background-danger: #FF7777;
 
     --text-primary: #fff;
     --text-secondary: #627884;
@@ -60,6 +62,14 @@ body {
     align-items: flex-start;
 }
 
+.flex-start-70 {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .flex-row {
     display: flex;
     justify-content: center;
@@ -67,9 +77,17 @@ body {
     gap: 2rem;
 }
 
+
 h1 {
     font-size: 36px;
     font-weight: 900;
     letter-spacing: -0.04em;
     color: var(--text-primary);
+}
+
+@media screen and (max-width: 1142px){
+    .flex-row {
+        flex-direction: column;
+        width: 100%;
+    }
 }
