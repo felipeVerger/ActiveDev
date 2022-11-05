@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import {BsFillBriefcaseFill} from 'react-icons/bs';
-import { HiDocument } from 'react-icons/hi';
-import { RiUserFollowFill } from 'react-icons/ri';
-import {AiOutlineMail, AiOutlineUser, AiFillCalendar} from 'react-icons/ai';
-import {IoIosAddCircle} from 'react-icons/io';
+
+import { sidebarLinks } from '../../utils/data';
 
 import './Sidebar.css';
+
+
 
 const Sidebar = ({openSidebar}) => {
 
@@ -14,48 +13,14 @@ const Sidebar = ({openSidebar}) => {
     <div className={openSidebar ? 'sidebar-container open' : 'sidebar-container'}>
       <nav className='sidebar-nav'>
         <ul className='sidebar-list'>
-          <li className='sidebar-list-item'>
-            <Link to='/applications' className='sidebar-list-item-link'>
-              <AiOutlineUser className='sidebar-icon'/>
-              Your profile
-            </Link>
-          </li>
-          <li>
-            <Link to='/applications' className='sidebar-list-item-link'>
-              <HiDocument className='sidebar-icon'/>
-              Your applications
-            </Link>
-          </li>
-          <li>
-            <Link to='/add-application' className='sidebar-list-item-link'>
-              <IoIosAddCircle className='sidebar-icon'/>
-              Create application
-            </Link>
-          </li>
-          <li>
-            <Link to='/applications' className='sidebar-list-item-link'>
-              <BsFillBriefcaseFill className='sidebar-icon'/>
-              Jobs for you
-            </Link>
-          </li>
-          <li>
-            <Link to='/applications' className='sidebar-list-item-link'>
-              <AiOutlineMail className='sidebar-icon'/>
-              Invitations
-            </Link>
-          </li>
-          <li>
-            <Link to='/applications' className='sidebar-list-item-link'>
-              <AiFillCalendar className='sidebar-icon'/>
-              Events
-            </Link>
-          </li>
-          <li>
-            <Link to='/applications' className='sidebar-list-item-link'>
-              <RiUserFollowFill className='sidebar-icon'/>
-              Following
-            </Link>
-          </li>
+          {sidebarLinks.map((link) => (
+            <li className='sidebar-list-item'>
+              <Link to={link.to} className='sidebar-list-item-link'>
+                {link.icon}
+                {link.text}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
