@@ -1,40 +1,67 @@
 import React, { useState } from 'react';
 import {AiFillFolderAdd} from 'react-icons/ai';
-import Swal from 'sweetalert2';
 
 import { client } from '../../client';
+import {Modal }from '../Modal/Modal';
 import Input from './Input';
 
 import './CreateApplication.css';
 
+const initialState = {
+  title: '',
+  modality: '',
+  city: '',
+  description: '',
+  company: '',
+  conditions: '',
+  salary: '',
+  status: '',
+  date: '',
+}
+
 const CreateApplication = ({ user }) => {
-  const [formData, setFormData] = useState({
-    title: '',
-    modality: '',
-    city: '',
-    description: '',
-    company: '',
-    conditions: '',
-    salary: '',
-    status: '',
-    date: '',
-  });
+  const [formData, setFormData] = useState(initialState);
   const [companyLogo, setCompanyLogo] = useState(null);
+  const [wrongImageType, setWrongImageType] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
+  const uploadImage = (e) => {
+    const { type, name } = e.target.files[0];
+    if(type === 'image/png' || type === 'image/svg' || type === 'image/jpeg' || type === 'image/gif' || type === 'image/tiff'){
+      setWrongImageType(false);
+
+      client.assets
+        .upload('image', e.target.files[0], { contentType: type, filename: name })
+        .then((docuemnt) => {
+          setCompanyLogo(docuemnt);
+        })
+        .catch((error) => {
+          console.log('Image upload error: ' + error);
+        })
+    } else {
+      setWrongImageType(true);
+    }
+  }
+
+
+  const formValidation = (formData) => {
+    let error = false;
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value === "") {
+        error = true;
+      }
+    });
+    return error;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { title, modality, company, conditions, city, description, salary, status, date } = formData;
-
-    if(Object.values(formData) === ''){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-      })
+    if(formValidation(formData)){
+      Modal('error', 'Something went wrong', 'All fields are required')
     } else {
       const doc = {
         _type: 'post',
@@ -42,7 +69,13 @@ const CreateApplication = ({ user }) => {
         description,
         modality,
         business: company,
-        businessLogo: companyLogo,
+        businessLogo: {
+          _type: 'image',
+          asset: {
+            _type: 'reference',
+            _ref: companyLogo?._id
+          }
+        },
         city,
         conditions,
         salary,
@@ -53,15 +86,11 @@ const CreateApplication = ({ user }) => {
           _ref: user._id
         },
       }
-      
       client.create(doc)
-        .then(() => 
-          Swal.fire({
-            icon: 'success',
-            text: 'Your application was successfully created',
-            timer: 1500
-          })
-        )
+        .then(() => {
+          Modal('success', 'Your application was created successfuly');
+          setFormData(initialState);
+      })
     }
     
   }
@@ -141,10 +170,11 @@ const CreateApplication = ({ user }) => {
               <label className="file-input flex-start" htmlFor='file'> 
                   Company Logo
                   <div className='file-input-block'>
-                    <AiFillFolderAdd className='file-icon'/>
-                    <p>Click this block to add a picture</p>
+                    <AiFillFolderAdd className={wrongImageType ? 'file-icon wrong-type' : 'file-icon'}/>
+                    <p>{wrongImageType ? 'Wrong image type' : 'Click this block to add a picture'}</p>
                   </div>
-                  <input type="file" id='file' name='companyLogo' onChange={(e) => setCompanyLogo(e.target.value)}/>
+                  <input type="file" id='file' name='companyLogo' onChange={uploadImage}/>
+                  
               </label>
             </div>
             <div className='form-btn-block'>

@@ -45,10 +45,14 @@ const Navbar = ({ user, setTheme, theme }) => {
                 <a href='https://www.getonbrd.com/help' target='_blank' rel='noreferrer nofollow'>Help</a>
                 <a href='https://www.getonbrd.com/blog/posts' target='_blank' rel='noreferrer nofollow'>Blog</a>
             </div>
+            {user ? (
             <div className='user-block'>
-                <Avatar name={user?.username} src={urlFor(user?.image.asset)} round size='35' className='avatar'/>
+                <Avatar name={user?.username} src={urlFor(user?.image?.asset)} round size='35' className='avatar'/>
                 <span className='username'>{user?.username}</span>
             </div>
+            ) : (
+                <Link to='/login'>Login</Link>
+            )}
             <BsFillBellFill className='bell-icon'/>
         </div>
     </div>

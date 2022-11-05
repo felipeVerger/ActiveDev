@@ -10,6 +10,7 @@
     --background-disable: #A7B7BE;
     --background-enable: #47C27A;
     --background-danger: #FF7777;
+    --background-input: #e1e1e1;
 
     --text-primary: #2b353b;
     --text-secondary: #627884;
@@ -27,6 +28,7 @@
     --background-disable: #A7B7BE;
     --background-enable: #47C27A;
     --background-danger: #FF7777;
+    --background-input: white;
 
     --text-primary: #fff;
     --text-secondary: #627884;

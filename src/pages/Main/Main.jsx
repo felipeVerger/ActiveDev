@@ -13,10 +13,15 @@ const Main = () => {
 
   return (
     <div className='main-container'>
-      <Routes>
-        <Route path='/applications' element={<Applications/>}/>
-        <Route path='/add-application' element={<CreateApplication user={user}/>}/>
-      </Routes>
+        {user ? (
+          <Routes>
+            <Route path='/applications' element={<Applications/>}/>
+            <Route path='/add-application' element={<CreateApplication user={user}/>}/>
+          </Routes>
+        ) : (
+          <p>To access this funcionalities you have to be logged in</p>
+        )
+        }
     </div>
   )
 }

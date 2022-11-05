@@ -46,6 +46,11 @@
     border-radius: 4px;
     outline: none;
     text-indent: 10px;
+    background-color: var(--background-input);
+}
+
+.application-input:focus {
+    border: 2px solid rgb(189, 189, 189);
 }
 
 textarea {
@@ -57,6 +62,11 @@ textarea {
     border-radius: 4px;
     text-indent: 10px;
     padding-top: 10px;
+    background-color: var(--background-input);
+}
+
+textarea:focus {
+    border: 2px solid rgb(189, 189, 189);
 }
 
 
@@ -93,7 +103,7 @@ input[type="file"] {
 .file-input-block {
     width: 100%;
     height: 255px;
-    background-color: white;
+    background-color: var(--background-input);;
     border: none;
     border-radius: 4px;
     outline: none;
@@ -105,17 +115,22 @@ input[type="file"] {
     transition: all 0.3s ease;
 }
 
+.file-input-block:hover {
+    background-color: rgb(211, 211, 211);
+}
+
 .file-input-block p {
     color: var(--text-secondary);
 }
 
-.file-input-block:hover {
-    background-color: var(--background-input-search);
-}
 
 .file-icon {
     font-size: 2.5em;
     color: var(--text-secondary);
+}
+
+.wrong-type {
+    color: var(--background-danger);
 }
 
 
