@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({type, label, name, placeholder, handleChange}) => {
+const Input = ({type, label, name, value, placeholder, handleChange}) => {
   return (
     <label htmlFor={name} className='application-label flex-start'>
         {label}
@@ -12,6 +12,7 @@ const Input = ({type, label, name, placeholder, handleChange}) => {
                 className='application-input'
                 placeholder={placeholder}
                 onChange={handleChange}
+                value={value}
             />
         ) : (
             <textarea name={name} id={name} placeholder={placeholder} onChange={handleChange}/>

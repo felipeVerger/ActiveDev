@@ -89,10 +89,13 @@ const CreateApplication = ({ user }) => {
       client.create(doc)
         .then(() => {
           Modal('success', 'Your application was created successfuly');
-          setFormData(initialState);
+          resetForm();
       })
     }
-    
+  }
+
+  const resetForm = () => {
+    setFormData(initialState);
   }
 
   return (
@@ -106,6 +109,7 @@ const CreateApplication = ({ user }) => {
                   label='Title'
                   type='text'
                   name='title'
+                  value={formData.title}
                   placeholder='Enter the title position'
                   handleChange={handleChange}
                 />
@@ -113,6 +117,7 @@ const CreateApplication = ({ user }) => {
                     label='Modality'
                     type='text'
                     name='modality'
+                    value={formData.modality}
                     placeholder='Enter the modality of your application. Ex: full-time'
                     handleChange={handleChange}
                   />
@@ -120,6 +125,7 @@ const CreateApplication = ({ user }) => {
                   label='City'
                   type='text'
                   name='city'
+                  value={formData.city}
                   placeholder='Enter the city where the company is located or if it is remote'
                   handleChange={handleChange}
                 />
@@ -128,6 +134,7 @@ const CreateApplication = ({ user }) => {
                 label='Description'
                 name='description'
                 type='text'
+                value={formData.description}
                 placeholder='Enter a description of the position you applied'
                 handleChange={handleChange}
               />
@@ -137,12 +144,14 @@ const CreateApplication = ({ user }) => {
                 <Input
                   label='Company Name'
                   name='company'
+                  value={formData.company}
                   type='text'
                   handleChange={handleChange}
                 />
                 <Input
                   label='Conditions'
                   name='conditions'
+                  value={formData.conditions}
                   type='text'
                   handleChange={handleChange}
                 />
@@ -150,6 +159,7 @@ const CreateApplication = ({ user }) => {
                   label='Salary'
                   name='salary'
                   type='text'
+                  value={formData.salary}
                   handleChange={handleChange}
                 />
                 <div className='form-bottom-left'>
@@ -157,12 +167,14 @@ const CreateApplication = ({ user }) => {
                     label='Status'
                     name='status'
                     type='text'
+                    value={formData.status}
                     handleChange={handleChange}
                   />
                   <Input
                     label='Date Send'
                     name='date'
                     type='date'
+                    value={formData.date}
                     handleChange={handleChange}
                   />
                 </div>
@@ -178,7 +190,7 @@ const CreateApplication = ({ user }) => {
               </label>
             </div>
             <div className='form-btn-block'>
-              <button type='button'>Reset</button>
+              <button type='button' onClick={() => resetForm()}>Reset</button>
               <button type='submit'>Submit</button>
             </div>
           </form>
