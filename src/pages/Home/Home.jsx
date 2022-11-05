@@ -13,8 +13,9 @@ const Home = () => {
 
   return (
     <div className='home-container' data-theme={theme}> 
-      <Navbar user={user} setTheme={setTheme} theme={theme}/>
+      <Navbar user={user && user} setTheme={setTheme} theme={theme}/>
       <div className='body-wrapper'>
+        <div className='backdrop'/>
         <Sidebar/>
         <Main/>
       </div>
