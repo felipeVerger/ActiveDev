@@ -91,7 +91,7 @@
     top: 5px;
     width: 48px;
     height: 48px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .color-hierarchy1 {

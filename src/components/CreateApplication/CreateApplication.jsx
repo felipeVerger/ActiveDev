@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {AiFillFolderAdd} from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 import { client } from '../../client';
 import {Modal }from '../Modal/Modal';
@@ -23,6 +24,7 @@ const CreateApplication = ({ user }) => {
   const [formData, setFormData] = useState(initialState);
   const [companyLogo, setCompanyLogo] = useState(null);
   const [wrongImageType, setWrongImageType] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -90,6 +92,7 @@ const CreateApplication = ({ user }) => {
         .then(() => {
           Modal('success', 'Your application was created successfuly');
           resetForm();
+          navigate('/applications')
       })
     }
   }
