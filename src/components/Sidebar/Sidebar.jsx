@@ -14,7 +14,7 @@ const Sidebar = ({openSidebar}) => {
       <nav className='sidebar-nav'>
         <ul className='sidebar-list'>
           {sidebarLinks.map((link) => (
-            <li className='sidebar-list-item'>
+            <li className='sidebar-list-item' key={link.text}>
               <Link to={link.to} className='sidebar-list-item-link'>
                 {link.icon}
                 {link.text}

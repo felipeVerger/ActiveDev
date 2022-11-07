@@ -24,3 +24,5 @@ export const userQuery = (email) => {
     const query = `*[_type == "user" && email == '${email}']`;
     return query;
 };
+
+export const postsQuery = `*[_type == "post"] | order(_createdAt desc)`;

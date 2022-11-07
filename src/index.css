@@ -12,8 +12,12 @@
     --background-danger: #FF7777;
     --background-input: #e1e1e1;
 
+    --btn-border: #0093d3;
+    --btn-text-color: #0093d3;
+
     --text-primary: #2b353b;
     --text-secondary: #627884;
+    --text-tertiary:rgb(98, 120, 132);
     --accent: #8e05c2;
     --border: #333;
     --form-bg: #fff;
@@ -30,8 +34,12 @@
     --background-danger: #FF7777;
     --background-input: white;
 
+    --btn-border: #2e6370;
+    --btn-text-color: #fff;
+
     --text-primary: #fff;
     --text-secondary: #627884;
+    --text-tertiary: #a7b7be;
     --accent: #8e05c2;
     --border: #808080;
     --form-bg: #191919;
