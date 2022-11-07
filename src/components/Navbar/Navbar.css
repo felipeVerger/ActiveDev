@@ -123,6 +123,25 @@
     font-size: 1.5em;
 }
 
+.logout-btn {
+    text-decoration: none;
+    line-height: 2.6em;
+    max-width: 100%;
+    padding: 0 1.15em;
+    border: 0;
+    min-height: 2.6em;
+    outline: 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-color: var(--btn-border);
+    background-color: transparent;
+    color: var(--btn-text-color);
+}
+
 .hamburger-icon {
     display: none;
 }

@@ -1,0 +1,128 @@
+.stages-btn {
+    /* display: inline-block; */
+    line-height: 2.6em;
+    max-width: 100%;
+    padding: 0 1.15em;
+    /* vertical-align: middle; */
+    /* white-space: nowrap; */
+    /* text-align: center; */
+    border: 0;
+    min-height: 2.6em;
+    outline: 0;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    /* -webkit-appearance: none; */
+    /* text-decoration: none !important; */
+    /* touch-action: manipulation; */
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    -webkit-transition: .15s;
+    -moz-transition: .15s;
+    -o-transition: .15s;
+    transition: .15s;
+    border-color: var(--btn-border);
+    background-color: transparent;
+    color: var(--btn-text-color);
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+.stages-btn svg {
+    font-size: 1.5em;
+}
+
+.list {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.list th {
+    padding: 14px 10px 14px 10px;
+    box-shadow: 0 1px 0 rgb(135 153 160 / 25%);
+    text-align: left;
+    white-space: nowrap;
+    /* position: -webkit-sticky; */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-weight: 700;
+}
+
+.list tr {
+    background-color: var(--background-primary);
+    transition: all .5s;
+}
+
+.list tr th {
+    color: var(--text-primary);
+}
+
+.list tr:hover {
+    background-color: var(--background-secondary);
+}
+
+.list td {
+    padding: 14px 10px 14px 10px;
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+/* .list td span {
+    color: var(--text-primary);
+} */
+
+.link-centered {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: .15s;
+}
+
+.company-logo {
+    border-radius: 3px;
+    margin-right: 10px;
+    top: 5px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.color-hierarchy1 {
+    color: var(--text-primary);
+}
+
+.color-hierarchy2 {
+    color: var(--text-tertiary);
+    margin-right: 7px;
+}
+
+.status-send {
+    background-color: var(--background-enable);
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    border-radius: 15px;
+    padding: 0.4em 0.65em;
+
+}
+
+.status-finished {
+    background-color: var(--background-disable);
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    border-radius: 15px;
+    padding: 0.4em 0.65em;
+}
+

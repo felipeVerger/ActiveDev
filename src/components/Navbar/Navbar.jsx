@@ -51,7 +51,7 @@ const Navbar = ({ user, setTheme, theme }) => {
                 <span className='username'>{user?.username}</span>
             </div>
             ) : (
-                <Link to='/login'>Login</Link>
+                <Link to='/login' className='logout-btn'>Login</Link>
             )}
             <BsFillBellFill className='bell-icon'/>
         </div>

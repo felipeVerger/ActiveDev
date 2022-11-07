@@ -19,6 +19,7 @@ const Login = () => {
     confirmPassword: '',
     image: ''
   });
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -41,7 +42,7 @@ const Login = () => {
             })
             .catch((err) => {
                 console.log(err);
-                alert('Something went wrong');
+                setError('Something went wrong, please try again')
             })
 
     } else {
@@ -113,6 +114,7 @@ const Login = () => {
                     onDone={({base64}) => setFormData({...formData, image: base64 })}/>
             </>
           )}
+          {error && <p>{error}</p>}
           <button className='login-btn' type="submit">Submit</button>
           <p className='switch-mode-p'>
             {!isLoggedIn

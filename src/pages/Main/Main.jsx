@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import unauthoizedImage from '../../assets/unauthorized.png';
 
 import Applications from '../../components/Applications/Applications';
 import CreateApplication from '../../components/CreateApplication/CreateApplication';
@@ -15,11 +16,14 @@ const Main = () => {
     <div className='main-container'>
         {user ? (
           <Routes>
-            <Route path='/applications' element={<Applications/>}/>
+            <Route path='/applications' element={<Applications user={user}/>}/>
             <Route path='/add-application' element={<CreateApplication user={user}/>}/>
           </Routes>
         ) : (
-          <p>To access this funcionalities you have to be logged in</p>
+          <div className='unauthorized-block'>
+            <img src={unauthoizedImage} alt="unauthoized" />
+            <p>To access this funcionalities you have to be logged in</p>
+          </div>
         )
         }
     </div>
