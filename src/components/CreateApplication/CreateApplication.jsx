@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
 import {AiFillFolderAdd} from 'react-icons/ai';
-
+import { useNavigate } from 'react-router-dom';
 import { client } from '../../client';
-import {Modal }from '../Modal/Modal';
+import { conditionsOptions, modalityOptions, statusOptions } from '../../utils/data';
+import { Modal }from '../Modal/Modal';
+import Select from 'react-select'
 import Input from './Input';
 
 import './CreateApplication.css';
 
-const initialState = {
-  title: '',
-  modality: '',
-  city: '',
-  description: '',
-  company: '',
-  conditions: '',
-  salary: '',
-  status: '',
-  date: '',
-}
-
 const CreateApplication = ({ user }) => {
+  const initialState = {
+    title: '',
+    modality: '',
+    city: '',
+    description: '',
+    company: '',
+    conditions: [],
+    salary: '',
+    status: '',
+    date: '',
+  }
   const [formData, setFormData] = useState(initialState);
   const [companyLogo, setCompanyLogo] = useState(null);
   const [wrongImageType, setWrongImageType] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -60,6 +62,7 @@ const CreateApplication = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { title, modality, company, conditions, city, description, salary, status, date } = formData;
+    console.log(conditions);
     if(formValidation(formData)){
       Modal('error', 'Something went wrong', 'All fields are required')
     } else {
@@ -90,6 +93,7 @@ const CreateApplication = ({ user }) => {
         .then(() => {
           Modal('success', 'Your application was created successfuly');
           resetForm();
+          navigate('/applications')
       })
     }
   }
@@ -113,14 +117,14 @@ const CreateApplication = ({ user }) => {
                   placeholder='Enter the title position'
                   handleChange={handleChange}
                 />
-                  <Input
-                    label='Modality'
-                    type='text'
-                    name='modality'
-                    value={formData.modality}
-                    placeholder='Enter the modality of your application. Ex: full-time'
-                    handleChange={handleChange}
+                <label htmlFor="modality" className='select-label'>
+                  Modality
+                  <Select
+                    className='select-input'
+                    options={modalityOptions.map(modality => ({label: modality.label, value: modality.value}))}
+                    onChange={(e) => setFormData({...formData, modality: e.value})}
                   />
+                </label>
                 <Input
                   label='City'
                   type='text'
@@ -148,13 +152,15 @@ const CreateApplication = ({ user }) => {
                   type='text'
                   handleChange={handleChange}
                 />
-                <Input
-                  label='Conditions'
-                  name='conditions'
-                  value={formData.conditions}
-                  type='text'
-                  handleChange={handleChange}
-                />
+                <label htmlFor="conditions" className='select-label'>
+                  Conditions
+                  <Select
+                    className='select-input'
+                    isMulti
+                    options={conditionsOptions.map(condition => ({label: condition.label, value: condition.value}))}
+                    onChange={(e) => setFormData({...formData, conditions: e.map(condition => (condition.value))})}
+                  />
+                </label>
                 <Input
                   label='Salary'
                   name='salary'
@@ -163,13 +169,14 @@ const CreateApplication = ({ user }) => {
                   handleChange={handleChange}
                 />
                 <div className='form-bottom-left'>
-                  <Input
-                    label='Status'
-                    name='status'
-                    type='text'
-                    value={formData.status}
-                    handleChange={handleChange}
-                  />
+                  <label htmlFor="status" className='select-label'>
+                    Status
+                    <Select
+                      className='select-input'
+                      options={statusOptions.map(status => ({label: status.label, value: status.value}))}
+                      onChange={(e) => setFormData({...formData, status: e.value})}
+                    />
+                  </label>
                   <Input
                     label='Date Send'
                     name='date'
@@ -186,7 +193,6 @@ const CreateApplication = ({ user }) => {
                     <p>{wrongImageType ? 'Wrong image type' : 'Click this block to add a picture'}</p>
                   </div>
                   <input type="file" id='file' name='companyLogo' onChange={uploadImage}/>
-                  
               </label>
             </div>
             <div className='form-btn-block'>

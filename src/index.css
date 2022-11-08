@@ -10,7 +10,8 @@
     --background-disable: #A7B7BE;
     --background-enable: #47C27A;
     --background-danger: #FF7777;
-    --background-input: #e1e1e1;
+    --background-input: white;
+    --background-form-create: #a5edff;
 
     --btn-border: #0093d3;
     --btn-text-color: #0093d3;
@@ -33,6 +34,7 @@
     --background-enable: #47C27A;
     --background-danger: #FF7777;
     --background-input: white;
+    --background-form-create: #0f3942;
 
     --btn-border: #2e6370;
     --btn-text-color: #fff;
@@ -73,7 +75,6 @@ body {
 }
 
 .flex-start-70 {
-    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -95,9 +96,24 @@ h1 {
     color: var(--text-primary);
 }
 
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 1142px){
     .flex-row {
         flex-direction: column;
         width: 100%;
     }
 }
+
+@media screen and (max-width: 994px){
+    h1 {
+        text-align: center;
+    }
+}
+
+
