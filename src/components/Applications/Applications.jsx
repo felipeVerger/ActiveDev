@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io';
 
 
+import Loader from '../Loader/Loader';
 import { client } from '../../client';
 import { postsQuery } from '../../utils/data';
 
@@ -11,8 +12,10 @@ import './Applications.css';
 const Applications = ({ user }) => {
   const [applications, setApplications] = useState(null);
   const [openStage, setOpenStage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     client.fetch(postsQuery)
       .then((data) => {
         setApplications(data);
@@ -20,7 +23,8 @@ const Applications = ({ user }) => {
       .catch((error) => {
         console.log(error)
       })
-  }, [user?._id])
+      setLoading(false);
+  }, [applications])
 
   console.log(applications);
 
@@ -44,7 +48,7 @@ const Applications = ({ user }) => {
             <th>Date sent</th>
           </tr>
         </thead>
-        {applications?.filter((a) => a.postedBy._ref === user._id).map((application) => (
+        {loading ? <Loader/> : applications?.filter((a) => a.postedBy._ref === user._id).map((application) => (
           <Application application={application} key={application._id}/>
         ))}
       </table>

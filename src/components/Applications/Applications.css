@@ -64,7 +64,7 @@
     color: var(--text-primary);
 }
 
-.list tr:hover {
+.list tbody tr:hover {
     background-color: var(--background-secondary);
 }
 
