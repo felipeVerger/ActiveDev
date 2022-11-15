@@ -11,7 +11,8 @@
     --background-enable: #47C27A;
     --background-danger: #FF7777;
     --background-input: white;
-    --background-form-create: #a5edff;
+    --background-form-create: #2b353b;
+    --background-stages-block: #ffffff;
 
     --btn-border: #0093d3;
     --btn-text-color: #0093d3;
@@ -35,6 +36,7 @@
     --background-danger: #FF7777;
     --background-input: white;
     --background-form-create: #0f3942;
+    --background-stages-block: #0f3942;
 
     --btn-border: #2e6370;
     --btn-text-color: #fff;
@@ -88,6 +90,13 @@ body {
     gap: 2rem;
 }
 
+.flex-column-gap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 
 h1 {
     font-size: 36px;
@@ -97,6 +106,8 @@ h1 {
 }
 
 .loader-container {
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

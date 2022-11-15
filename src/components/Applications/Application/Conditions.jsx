@@ -1,43 +1,40 @@
 import React from 'react'
-import {AiOutlineGlobal} from 'react-icons/ai';
-import {BiTimeFive, BiAccessibility} from 'react-icons/bi';
-import {BsUmbrella} from 'react-icons/bs';
-import {GiConverseShoe} from 'react-icons/gi';
-import {RiHomeWifiFill, RiComputerLine} from 'react-icons/ri';
-import {MdOutlineHealthAndSafety, MdPets, MdOutlineFastfood} from 'react-icons/md';
-
+import { useLocation } from 'react-router-dom';
+import { icons } from '../../../constants';
 
 
 const Conditions = ({ condition }) => {
+    const location = useLocation().pathname;
+
     const conditionIcons = () => { 
     switch(condition) {
         case 'informal-dress-code':
-            return <GiConverseShoe/>
+            return icons.dressCodeIcon
         case 'fully-remote':
-            return <AiOutlineGlobal />
+            return icons.remoteIcon
         case 'partially-remote':
-            return <RiHomeWifiFill/>
+            return icons.homeWifiIcon
         case 'flexible-hours':
-            return <BiTimeFive/>
+            return icons.clockIcon
         case 'health-coverage':
-            return <MdOutlineHealthAndSafety/>
+            return icons.healthIcon
         case 'computer-provided': 
-            return <RiComputerLine/>
+            return icons.computerIcon
         case 'vacation':
-            return <BsUmbrella/>
+            return icons.vacationIcon
         case 'pet-friendly':
-            return <MdPets/>
+            return icons.petsIcon
         case 'accessible':
-            return <BiAccessibility/>
+            return icons.accessibleIcon
         case 'beverages-&-snacks':
-            return <MdOutlineFastfood/>
+            return icons.foodIcon
         default:
             return null;
       }
     }
 
   return (
-    <span className="color-hierarchy2">
+    <span className={location === '/applications' ? "color-hierarchy2" : 'detail-condition-icon'}>
       {conditionIcons()}
     </span>
   );
