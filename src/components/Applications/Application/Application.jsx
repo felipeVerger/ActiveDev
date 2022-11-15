@@ -1,22 +1,24 @@
 import React from 'react'
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 import { urlFor } from '../../../client';
 import Conditions from './Conditions';
 
 const Application = ({ application }) => {
+
   return (
     <tbody className="application">
       <tr>
         <td>
-          <a href="#" className="link-centered">
+          <Link to={`/applications/${application._id}`} className="link-centered">
             <img
               src={urlFor(application?.businessLogo?.asset?._ref)}
               className="company-logo"
               alt="company-logo"
             />
             <strong className="color-hierarchy1">{application.title}</strong>
-          </a>
+          </Link>
         </td>
         <td>
           <span className="color-hierarchy2">{application.modality}</span>

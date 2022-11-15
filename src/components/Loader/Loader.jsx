@@ -6,7 +6,7 @@ const Loader = () => {
         <DotSpinner 
             size={40}
             speed={0.9} 
-            color="black" 
+            color='var(--text-primary)' 
         />
     </div>
   )

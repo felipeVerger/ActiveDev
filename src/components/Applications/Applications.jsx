@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io';
+import { IoMdArrowDropdown, IoMdArrowDropup } from 'react-icons/io';
 
 
 import Loader from '../Loader/Loader';
@@ -12,10 +12,14 @@ import './Applications.css';
 const Applications = ({ user }) => {
   const [applications, setApplications] = useState(null);
   const [openStage, setOpenStage] = useState(false);
+  const [filters, setFilters] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const handleFilters = (e) => {
+    setFilters(e.target.value);
+  }
+
   useEffect(() => {
-    setLoading(true);
     client.fetch(postsQuery)
       .then((data) => {
         setApplications(data);
@@ -23,11 +27,9 @@ const Applications = ({ user }) => {
       .catch((error) => {
         console.log(error)
       })
-      setLoading(false);
-  }, [applications])
+  }, [])
 
-  console.log(applications);
-
+  if(!applications?.length) return <Loader/>
   return (
     <div>
       <h1>Your applications</h1>
@@ -35,6 +37,25 @@ const Applications = ({ user }) => {
         All stages
         {openStage ? <IoMdArrowDropup/> : <IoMdArrowDropdown/>}
       </button>
+      {openStage && (
+        <div className='stages-block'>
+          <form className='stages-filters'>
+            <label htmlFor="sent"> 
+              <input type="checkbox" id="sent" name="sent" value="sent" onChange={handleFilters}/>
+              Sent
+            </label>
+            <label htmlFor="sentButIncomplete">
+              <input type="checkbox" id="sentButIncomplete" name="sentButIncomplete" value="sentButIncomplete" onChange={handleFilters}/>
+              Sent but incomplete
+            </label>
+            <label htmlFor="finished">
+              <input type="checkbox" id="finished" name="finished" value="finished" onChange={handleFilters}/>
+              Process finished
+            </label>
+            <button className='stage-btn'>Save</button>
+          </form>
+        </div>
+      )}
       <table className='list'>
         <thead>
           <tr>
@@ -48,7 +69,7 @@ const Applications = ({ user }) => {
             <th>Date sent</th>
           </tr>
         </thead>
-        {loading ? <Loader/> : applications?.filter((a) => a.postedBy._ref === user._id).map((application) => (
+        {applications?.filter((a) => a.postedBy._ref === user._id).map((application) => (
           <Application application={application} key={application._id}/>
         ))}
       </table>

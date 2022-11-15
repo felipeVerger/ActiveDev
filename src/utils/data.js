@@ -50,4 +50,9 @@ export const userQuery = (email) => {
     return query;
 };
 
+export const getPostById = (id) => {
+  const query = `*[_type == "post" && _id == '${id}']`;
+  return query;
+}
+
 export const postsQuery = `*[_type == "post"] | order(_createdAt desc)`;
